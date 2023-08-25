@@ -1,7 +1,6 @@
-import { Button } from "antd";
 import VueComponent from "./VueComponent";
  
-class Test extends VueComponent {
+class App extends VueComponent {
   setup() {
     // 可以通过 ref 声明状态
     // setup 只在初始化时执行一次，所以通过 ref 声明状态时条件、循环也没有关系
@@ -20,16 +19,16 @@ class Test extends VueComponent {
     this.template = () => {
       return (
         <div>
-          <Button onClick={() => a.value++}>
+          <button onClick={() => a.value++}>
             A 按钮 { a.value }
-          </Button>
-          <Button onClick={() => b.value++}>
+          </button>
+          <button onClick={() => b.value++}>
             B 按钮 { b.value }
-          </Button>
+          </button>
         </div>
       )
     }
   }
 }
 
-export default Test
+export default App

@@ -6,24 +6,30 @@ class VueComponent extends React.Component {
   state = {
     count: 1
   }
+  
   constructor(props) {
     super(props)
     this.setup()
   }
+
   // 副作用依赖收集
   effectMap = new Map<any, any[]>()
   _currentEffectCallback = null
+
   watchEffect(cb) {
     this._currentEffectCallback = cb
     cb()
     this._currentEffectCallback = null
   }
+
   update() {
     this.setState({ count: this.state.count + 1 })
   }
-  ref(initValue) {
+
+  // ref 状态声明
+  ref(initValue: any) {
     const that = this
-    let refObj = {
+    const refObj = {
       value: initValue,
       // 使用了这个状态的副作用
       refCallbcak: [] as any[],
@@ -47,9 +53,11 @@ class VueComponent extends React.Component {
       },
     })
   }
+
   render() {
     return this.template()
   }
+
   setup() {}
 }
 
