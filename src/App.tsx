@@ -1,4 +1,5 @@
-import VueComponent from "./VueComponent";
+import VueComponent from "./VueClassComponent";
+import createVueComponent from "./VueFuncComponent";
  
 class App extends VueComponent {
   setup() {
@@ -31,4 +32,34 @@ class App extends VueComponent {
   }
 }
 
-export default App
+
+const FuncApp = createVueComponent(({
+  ref,
+  watchEffect,
+  setTemplate,
+}) => {
+  const a = ref(0)
+  const b = ref(0)
+
+  watchEffect(() => {
+    console.log("A 点击次数：", a.value)
+  })
+  watchEffect(() => {
+    console.log("B 点击次数：", b.value)
+  })
+
+  setTemplate(() => {
+    return (
+      <div>
+        <button onClick={() => a.value++}>
+          A 按钮 { a.value }
+        </button>
+        <button onClick={() => b.value++}>
+          B 按钮 { b.value }
+        </button>
+      </div>
+    )
+  })
+})
+
+export default FuncApp

@@ -1,4 +1,3 @@
-
 import React from "react";
 
 class VueComponent extends React.Component {
@@ -13,7 +12,6 @@ class VueComponent extends React.Component {
   }
 
   // 副作用依赖收集
-  effectMap = new Map<any, any[]>()
   _currentEffectCallback = null
 
   watchEffect(cb) {
